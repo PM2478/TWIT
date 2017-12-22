@@ -3,4 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-end
+  has_many :posts, dependent: :destroy # remove a user's posts if his account is deleted.
+         
+
+
+        end

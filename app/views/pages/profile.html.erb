@@ -10,7 +10,9 @@
   </div>
 </div>
 
-
+<div>
+  <%= render '/components/post_form' %>
+</div>
 
 <div class="container">
   <div class="row">
@@ -20,6 +22,7 @@
            <p>Profile.</p>
         </div>
       </div>
+      <br>
        <div class="card">
         <div class="card-body">
            <p>Trends.</p>
@@ -27,13 +30,26 @@
      </div>
     </div>
     <div class="col-6">
+        <p>Questions.</p>
+        <% for @p in @posts %>
       <div class="card">
         <div class="card-body">
-           <%= render '/components/post_form' %>
-           <p>Questions.</p>
+           <div class="col-sm-1">
+              <img src="/avatar.png" class="rounded-img" height="50px" width="50px"></img>
+            </div>
+           <p class="post-title"><span class="post-owner"><a href="/user/<%= User.find(@p.user_id).username %>"><%= User.find(@p.user_id).username %></a></span> <span class="post-creation">- <%= @p.created_at.to_formatted_s(:short) %></span></p>
+           <p class="post-content"><%= @p.content %></p>
+           <p class="fontawe-links">
+                 <a href="#"> <i class="fa fa-reply" aria-hidden="true"></i></a>
+                 <a href="#"><i style="padding-left:42px;" class="fa fa-retweet" aria-hidden="true"></i>
+                 <a href="#"><i style="padding-left:42px;" class="fa fa-heart" aria-hidden="true"></i>
+                 <a href="#"><i style="padding-left:42px;" class="fa fa-envelope-o" aria-hidden="true"></i>
+               </p>
         </div>
       </div>
+        <% end  %>
     </div>
+
     <div class="col">
       <div class="card">
         <div class="card-body">
