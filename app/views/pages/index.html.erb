@@ -5,11 +5,11 @@
 <% if !user_signed_in? # if the user is not signed in, render this %>
     <style>
         body {
-            background: linear-gradient( /* somewhat transparent film on top of the BG to make it look darker. */
+             background: linear-gradient( /* somewhat transparent film on top of the BG to make it look darker. */
                 rgba(0,0,0, 0.7),
                 rgba(0,0,0, 0.7)
                 ), url("political rally.jpg") no-repeat center center fixed
-            
+                
             ; /* only display once, center horizontal and vertical, dont let scroll change position. */
             -webkit-background-size: cover;
             -moz-background-size: cover; /* cover the whole html element. */
@@ -57,6 +57,7 @@
         }
     </style>
     
+<div class="container">
     <div class="container-index row">
         <div class="col-sm-6">
             <h1>Welcome to Just Your Vote.</h1>
@@ -69,17 +70,19 @@
         </div>
         <div class="col-sm-6">
                    <div class="log-in panel">
-                       Log In
+                       <h4>Log In</h4>
                       <%= render '/components/log_in' %>
                    </div> 
                     
-                   <div class="sign-up panel">               
+                   <div class="sign-up panel">     
+                         <h4>New User?</h4>           
                         <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %>                    </div> 
                    </div>
         
         <div class="col-sm-12">
             <p class="footer-links">About  Help  Blog  Status  Jobs  Terms  Privacy  Cookies  Ads  info  Brand  Advertise  Businesses  Media  Developers  Directory © 2016 Flutter</p>
         </div>
+</div>
         
     </div>
 

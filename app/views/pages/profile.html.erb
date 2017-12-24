@@ -1,15 +1,18 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<style>
+</style>
 </head>
+<a name="top"></a>
 
-
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-3">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-  </div>
+<a href= "Top"></a>
+<div class="jumbotron jumbotron-fluid" style="position:relative; ">
+    <img src="/jetty.jpg" class="panel-image-preview"style="position:absolute; top:0; bottom:0;" >
+    <img src="/avatar.png" class="rounded-img" height="200px" width="200px" style="margin-bottom: -0px"    z-index: -1; position:relative;></img>
+    <h1 class="display-3"><%= current_user.username %></h1>
+    <p class="lead"></p>
 </div>
-
 <div>
   <%= render '/components/post_form' %>
 </div>
@@ -19,9 +22,13 @@
     <div class="col">
       <div class="card">
         <div class="card-body">
-           <p>Profile.</p>
+          <img src="/avatar.png" class="panel-image-preview" >
+           <h6><%= current_user.username %></h6>
+           <h6>Questions - <%= User.find_by_username(params[:id]).posts.count %></h6>
+           <h6>Followers</h6>
+           </div>
         </div>
-      </div>
+
       <br>
        <div class="card">
         <div class="card-body">
@@ -34,22 +41,23 @@
         <% for @p in @posts %>
       <div class="card">
         <div class="card-body">
-           <div class="col-sm-1">
+            <div class="col-sm-1">
               <img src="/avatar.png" class="rounded-img" height="50px" width="50px"></img>
             </div>
            <p class="post-title"><span class="post-owner"><a href="/user/<%= User.find(@p.user_id).username %>"><%= User.find(@p.user_id).username %></a></span> <span class="post-creation">- <%= @p.created_at.to_formatted_s(:short) %></span></p>
            <p class="post-content"><%= @p.content %></p>
-           <p class="fontawe-links">
+           <div class="col-sm-12">
+              <p class="fontawe-links">
                  <a href="#"> <i class="fa fa-reply" aria-hidden="true"></i></a>
                  <a href="#"><i style="padding-left:42px;" class="fa fa-retweet" aria-hidden="true"></i>
                  <a href="#"><i style="padding-left:42px;" class="fa fa-heart" aria-hidden="true"></i>
                  <a href="#"><i style="padding-left:42px;" class="fa fa-envelope-o" aria-hidden="true"></i>
                </p>
+           </div>  
         </div>
       </div>
         <% end  %>
     </div>
-
     <div class="col">
       <div class="card">
         <div class="card-body">
@@ -57,3 +65,7 @@
         </div>
       </div>
     </div>
+  </div>
+ 
+<a href="#top">Back to top</a>
+
